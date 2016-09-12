@@ -1,0 +1,71 @@
+# ParametersJS
+
+> Tiny and extendable library to type check class / object parameters.
+
+## Install
+
+```
+npm install [--save] parameters
+```
+
+## Usage
+
+```js
+const definitions = {
+  myBooleanParam: {
+    type: 'boolean',
+    default: false,
+    constant: false,
+    metas: { kind: 'static' }
+  },
+  myIntegerParam: {
+    type: 'integer',
+    min: 0,
+    max: Infinity,
+    default: 0,
+    constant: false,
+    metas: {
+      kind: 'static',
+      shortDescr: 'My First Integer Param',
+      fullDescr: 'This parameter is my first integer parameter in this example.',
+      unit: '%',
+      step: 1,
+      max: 100,
+    }
+  },
+  // ...
+};
+
+class MyClass {
+  constructor(options) {
+    this.params = parameters(definitions, options);
+
+    this.params.addListener((name, value, metas) => {
+      // ...
+    });
+
+    this.params.addParamListener('myIntegerParam', (value, metas) => {
+      // ...
+    });
+  }
+}
+
+const myInstance = new MyClass({ myIntegerParam: 42 });
+
+const bValue = myInstance.params.get('myBooleanParam');
+> false
+
+const iValue = myInstance.params.get('myIntegerParam');
+> 42
+
+myInstance.params.set('myIntegerParam', definitions.myIntegerParam.min - 1);
+```
+
+# API
+
+{{#globals}}{{>docs}}{{/globals}}
+
+## License
+
+BSD-3-Clause
+

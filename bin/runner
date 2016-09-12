@@ -125,7 +125,7 @@ function transpileFiles(srcDirectory, distDirectory, callback) {
 }
 
 function bundle(distDirectory) {
-  var entryPoint = path.join(distDirectory, 'index.js');
+  var entryPoint = path.join(cwd, pkg.main);
   var transpiler = javascripts.getTranspiler(srcDirectory, distDirectory, isAllowed, babelOptions, browserifyOptions);
 
   transpileFiles(srcDirectory, distDirectory, function() {
