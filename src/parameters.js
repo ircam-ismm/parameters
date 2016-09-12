@@ -1,3 +1,5 @@
+import paramTemplates from './paramTemplates';
+
 /**
  * Generic class for typed parameters.
  *
@@ -242,7 +244,7 @@ function parameters(definitions, values = {}) {
     const {
       definitionTemplate,
       typeCheckFunction
-    } = dictionnary[definition.type];
+    } = paramTemplates[definition.type];
 
     let value;
 
@@ -271,7 +273,7 @@ function parameters(definitions, values = {}) {
  *  parameter.
  */
 parameters.defineType = function(typeName, parameterDefinition) {
-  dictionnary[typeName] = parameterDefinition;
+  paramTemplates[typeName] = parameterDefinition;
 }
 
 export default parameters;

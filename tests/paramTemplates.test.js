@@ -1,8 +1,8 @@
 import tape from 'tape';
-import parameterTemplates from '../src/parameterTemplates';
+import paramTemplates from '../src/paramTemplates';
 
 tape('boolean', (t) => {
-  const test = parameterTemplates.boolean.typeCheckFunction;
+  const test = paramTemplates.boolean.typeCheckFunction;
 
   t.doesNotThrow(() => test(true, {}), 'should type check properly');
   t.doesNotThrow(() => test(false, {}), 'should type check properly');
@@ -22,7 +22,7 @@ tape('boolean', (t) => {
 });
 
 tape('interger', (t) => {
-  const test = parameterTemplates.integer.typeCheckFunction;
+  const test = paramTemplates.integer.typeCheckFunction;
 
   t.doesNotThrow(() => test(-100000, {}), 'should type check properly');
   t.doesNotThrow(() => test(-Infinity, {}), 'should type check properly');
@@ -47,7 +47,7 @@ tape('interger', (t) => {
 });
 
 tape('float', (t) => {
-  const test = parameterTemplates.float.typeCheckFunction;
+  const test = paramTemplates.float.typeCheckFunction;
 
   t.doesNotThrow(() => test(-100000, {}), 'should type check properly');
   t.doesNotThrow(() => test(-Infinity, {}), 'should type check properly');
@@ -72,7 +72,7 @@ tape('float', (t) => {
 });
 
 tape('string', (t) => {
-  const test = parameterTemplates.string.typeCheckFunction
+  const test = paramTemplates.string.typeCheckFunction
 
   t.doesNotThrow(() => test('10'), 'should type check properly');
   t.throws(() => test(-100000), 'should type check properly');
@@ -92,7 +92,7 @@ tape('string', (t) => {
 });
 
 tape('enum', (t) => {
-  const test = parameterTemplates.enum.typeCheckFunction
+  const test = paramTemplates.enum.typeCheckFunction
   const def = { list: ['a', '1'] };
 
   t.doesNotThrow(() => test('a', def), 'should type check properly');

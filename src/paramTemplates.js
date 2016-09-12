@@ -10,8 +10,8 @@ function clip(value, lower = -Infinity, upper = +Infinity) {
  * implemented param while the corresponding object value should the
  * {@link `paramDefinition`} of the defined type.
  *
- * typedef {Object} dictionnary
- * @type {Object<String, paramDefinition>}
+ * typedef {Object} paramTemplates
+ * @type {Object<String, paramTemplate>}
  */
 
 /**
@@ -35,7 +35,7 @@ function clip(value, lower = -Infinity, upper = +Infinity) {
  *  parameter that couls be usefull in the application.
  */
 
-const dictionnary = {
+export default {
   /**
    * @typedef {Object} booleanDefinition
    * @property {String} [type='boolean'] - Define a boolean parameter.
@@ -126,5 +126,3 @@ const dictionnary = {
     }
   }
 }
-
-export default dictionnary;
