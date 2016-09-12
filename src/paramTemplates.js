@@ -109,7 +109,7 @@ export default {
   },
 
   /**
-   * @typedef {Object} stringDefinition
+   * @typedef {Object} enumDefinition
    * @property {String} [type='enum'] - Define a boolean parameter.
    * @property {Boolean} default - Default value of the parameter.
    * @property {Array} list - Possible values of the parameter.

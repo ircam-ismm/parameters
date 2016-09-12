@@ -118,7 +118,7 @@ callbacks are registered.
 <a name="ParameterBag+reset"></a>
 
 ### parameterBag.reset([name])
-Reset a parameter to it's init value. Reset all if name is `null`
+Reset a parameter to its init value. Reset all parameters if no argument.
 
 **Kind**: instance method of <code>[ParameterBag](#ParameterBag)</code>  
 
@@ -195,10 +195,10 @@ Remove listener from a given param updates.
 
 <a name="parameters"></a>
 
-## parameters : <code>function</code>
-Factory for the `ParameterBag` class
+## parameters(definitions, values) ⇒ <code>[ParameterBag](#ParameterBag)</code>
+Factory for the `ParameterBag` class.
 
-**Kind**: global typedef  
+**Kind**: global function  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -227,6 +227,63 @@ Register a new type for the `parameters` factory.
 | --- | --- | --- | --- |
 | type | <code>String</code> | <code>&#x27;boolean&#x27;</code> | Define a boolean parameter. |
 | default | <code>Boolean</code> |  | Default value of the parameter. |
+| constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
+
+<a name="integerDefinition"></a>
+
+## integerDefinition : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | <code>String</code> | <code>&#x27;integer&#x27;</code> | Define a boolean parameter. |
+| default | <code>Boolean</code> |  | Default value of the parameter. |
+| min | <code>Boolean</code> | <code>-Infinity</code> | Minimum value of the parameter. |
+| max | <code>Boolean</code> | <code>+Infinity</code> | Maximum value of the parameter. |
+| constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
+
+<a name="floatDefinition"></a>
+
+## floatDefinition : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | <code>String</code> | <code>&#x27;float&#x27;</code> | Define a boolean parameter. |
+| default | <code>Boolean</code> |  | Default value of the parameter. |
+| min | <code>Boolean</code> | <code>-Infinity</code> | Minimum value of the parameter. |
+| max | <code>Boolean</code> | <code>+Infinity</code> | Maximum value of the parameter. |
+| constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
+
+<a name="stringDefinition"></a>
+
+## stringDefinition : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | <code>String</code> | <code>&#x27;string&#x27;</code> | Define a boolean parameter. |
+| default | <code>Boolean</code> |  | Default value of the parameter. |
+| constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
+
+<a name="enumDefinition"></a>
+
+## enumDefinition : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | <code>String</code> | <code>&#x27;enum&#x27;</code> | Define a boolean parameter. |
+| default | <code>Boolean</code> |  | Default value of the parameter. |
+| list | <code>Array</code> |  | Possible values of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 

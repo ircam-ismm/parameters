@@ -2,7 +2,6 @@ import parameters from '../src/parameters';
 import tape from 'tape';
 
 tape('parameters', (t) => {
-
   let defs;
   const params = parameters({}, {});
 
@@ -23,7 +22,6 @@ tape('parameters', (t) => {
 });
 
 tape('Param', (t) => {
-
   t.comment('constructor');
 
   const definitionTemplate = ['a'];
@@ -106,9 +104,7 @@ tape('ParameterBag', (t) => {
   bag.removeParamListener('a');
   t.deepEqual(bag._paramsListeners['a'].size, 0, 'should clear listeners properly');
 
-
   // callbacks
-
   bag.set('a', false);
   let counter = 0;
   let globalCallbackCalled = false;
