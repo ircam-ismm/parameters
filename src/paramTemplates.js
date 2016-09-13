@@ -124,5 +124,20 @@ export default {
 
       return value;
     }
+  },
+
+  /**
+   * @typedef {Object} anyDefinition
+   * @property {String} [type='enum'] - Define a parameter of any type.
+   * @property {Boolean} default - Default value of the parameter.
+   * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Object} [metas={}] - Optionnal metadata of the parameter.
+   */
+  any: {
+    definitionTemplate: ['default'],
+    typeCheckFunction(value, definition, name) {
+      // no check as it can have any type...
+      return value;
+    }
   }
 }

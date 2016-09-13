@@ -55,6 +55,4 @@ tape('example', (t) => {
   t.deepEqual(iValue, 42, 'should have proper value');
 
   myInstance.params.set('myIntegerParam', definitions.myIntegerParam.min - 1);
-
-
 });
