@@ -22,7 +22,11 @@ class Param {
     this.name = name;
     this.type = definition.type;
     this.definition = definition;
-    this.value = typeCheckFunction(value, definition, name);
+
+    if (this.definition.nullable === true && value === null)
+      this.value = null;
+    else
+      this.value = typeCheckFunction(value, definition, name);
     this._typeCheckFunction = typeCheckFunction;
   }
 
@@ -44,7 +48,8 @@ class Param {
     if (this.definition.constant === true)
       throw new Error(`Invalid assignement to constant param "${this.name}"`);
 
-    value = this._typeCheckFunction(value, this.definition, this.name);
+    if (!(this.definition.nullable === true && value === null))
+      value = this._typeCheckFunction(value, this.definition, this.name);
 
     if (this.value !== value) {
       this.value = value;

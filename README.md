@@ -2,6 +2,10 @@
 
 > Tiny and extendable library to type check class / object parameters.
 
+## TODOS
+
+- test nullable values
+
 ## Install
 
 ```
