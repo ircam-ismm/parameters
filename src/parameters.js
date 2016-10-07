@@ -68,6 +68,7 @@ class ParameterBag {
   constructor(params, definitions) {
     /**
      * List of parameters.
+     *
      * @type {Object<String, Param>}
      * @name _params
      * @memberof ParameterBag
@@ -78,6 +79,7 @@ class ParameterBag {
 
     /**
      * List of definitions with init values.
+     *
      * @type {Object<String, paramDefinition>}
      * @name _definitions
      * @memberof ParameterBag
@@ -88,6 +90,7 @@ class ParameterBag {
 
     /**
      * List of global listeners.
+     *
      * @type {Set}
      * @name _globalListeners
      * @memberof ParameterBag
@@ -98,6 +101,7 @@ class ParameterBag {
 
     /**
      * List of params listeners.
+     *
      * @type {Object<String, Set>}
      * @name _paramsListeners
      * @memberof ParameterBag
@@ -113,6 +117,7 @@ class ParameterBag {
 
   /**
    * Return the given definitions along with the initialization values.
+   *
    * @return {Object}
    */
   getDefinitions(name = null) {
@@ -124,9 +129,14 @@ class ParameterBag {
 
   /**
    * Return the value of the given parameter.
+   *
    * @param {String} name - Name of the parameter.
+   * @return {Mixed} - Value of the parameter.
    */
   get(name) {
+    if (!this.params[name])
+      throw new Error('Cannot read property value of undefined parameter "name"');
+
     return this._params[name].value;
   }
 
@@ -134,8 +144,10 @@ class ParameterBag {
    * Set the value of a parameter. If the value of the parameter is updated
    * (aka if previous value is different from new value) all registered
    * callbacks are registered.
+   *
    * @param {String} name - Name of the parameter.
    * @param {Mixed} value - Value of the parameter.
+   * @return {Mixed} - New value of the parameter.
    */
   set(name, value) {
     const param = this._params[name];
@@ -157,7 +169,18 @@ class ParameterBag {
   }
 
   /**
+   * Define if the `name` parameter exists or not.
+   *
+   * @param {String} name - Name of the parameter.
+   * @return {Boolean}
+   */
+  has(name) {
+    return (this._params[name]) ? true : false;
+  }
+
+  /**
    * Reset a parameter to its init value. Reset all parameters if no argument.
+   *
    * @param {String} [name=null] - Name of the parameter to reset.
    */
   reset(name = null) {
@@ -176,6 +199,7 @@ class ParameterBag {
 
   /**
    * Add listener to all param updates.
+   *
    * @param {ParameterBag~listenerCallack} callback - Listener to register.
    */
   addListener(callback) {
@@ -184,6 +208,7 @@ class ParameterBag {
 
   /**
    * Remove listener from all param changes.
+   *
    * @param {ParameterBag~listenerCallack} callback - Listener to remove. If
    *  `null` remove all listeners.
    */
@@ -202,6 +227,7 @@ class ParameterBag {
 
   /**
    * Add listener to a given param updates.
+   *
    * @param {String} name - Parameter name.
    * @param {ParameterBag~paramListenerCallack} callback - Function to apply
    *  when the value of the parameter changes.
@@ -212,6 +238,7 @@ class ParameterBag {
 
   /**
    * Remove listener from a given param updates.
+   *
    * @param {String} name - Parameter name.
    * @param {ParameterBag~paramListenerCallack} callback - Listener to remove.
    *  If `null` remove all listeners.
