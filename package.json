@@ -1,6 +1,6 @@
 {
   "name": "parameters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny library to deal with object parameters",
   "main": "dist/parameters.js",
   "scripts": {
