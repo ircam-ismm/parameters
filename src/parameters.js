@@ -134,8 +134,8 @@ class ParameterBag {
    * @return {Mixed} - Value of the parameter.
    */
   get(name) {
-    if (!this.params[name])
-      throw new Error('Cannot read property value of undefined parameter "name"');
+    if (!this._params[name])
+      throw new Error(`Cannot read property value of undefined parameter "${name}"`);
 
     return this._params[name].value;
   }
@@ -265,7 +265,7 @@ function parameters(definitions, values = {}) {
 
   for (let name in values) {
     if (definitions.hasOwnProperty(name) === false)
-      throw new Error(`Definition not found for param "${name}"`);
+      throw new Error(`Unknown param "${name}"`);
   }
 
   for (let name in definitions) {
@@ -273,6 +273,10 @@ function parameters(definitions, values = {}) {
       throw new Error(`Parameter "${name}" already defined`);
 
     const definition = definitions[name];
+
+    if (!paramTemplates[definition.type])
+      throw new Error(`Unknown param type "${definition.type}"`);
+
     const {
       definitionTemplate,
       typeCheckFunction
@@ -289,7 +293,7 @@ function parameters(definitions, values = {}) {
     definition.initValue = value;
 
     if (!typeCheckFunction || !definitionTemplate)
-      throw new Error(`Unknown param type "${definition.type}"`);
+      throw new Error(`Invalid param type definition "${definition.type}"`);
 
     params[name] = new Param(name, definitionTemplate, typeCheckFunction, definition, value);
   }
