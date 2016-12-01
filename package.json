@@ -4,7 +4,7 @@
   "description": "Tiny and extendable library to create type checked class parameters",
   "main": "dist/parameters.js",
   "scripts": {
-    "docs": "jsdoc2md -t tmpl/README.hbs src/*.js > README.md",
+    "doc": "jsdoc2md -t tmpl/README.hbs src/*.js > README.md",
     "test": "babel-tape-runner tests/**.test.js",
     "transpile": "node ./bin/runner --transpile",
     "prewatch": "npm run transpile",
