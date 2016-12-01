@@ -1,20 +1,18 @@
 # ParametersJS
 
-> Tiny and extendable library to type check class / object parameters.
-
-## TODOS
-
-- test nullable values
+> Tiny and extendable library to create type checked class parameters.
 
 ## Install
 
 ```
-npm install [--save] parameters
+npm install [--save] ircam-jstools/parameters
 ```
 
 ## Usage
 
 ```js
+import parameters from 'parameters'
+
 const definitions = {
   myBooleanParam: {
     type: 'boolean',
@@ -77,8 +75,9 @@ Bag of parameters. Main interface of the library
 * [ParameterBag](#ParameterBag)
     * _instance_
         * [.getDefinitions()](#ParameterBag+getDefinitions) ⇒ <code>Object</code>
-        * [.get(name)](#ParameterBag+get)
-        * [.set(name, value)](#ParameterBag+set)
+        * [.get(name)](#ParameterBag+get) ⇒ <code>Mixed</code>
+        * [.set(name, value)](#ParameterBag+set) ⇒ <code>Mixed</code>
+        * [.has(name)](#ParameterBag+has) ⇒ <code>Boolean</code>
         * [.reset([name])](#ParameterBag+reset)
         * [.addListener(callback)](#ParameterBag+addListener)
         * [.removeListener(callback)](#ParameterBag+removeListener)
@@ -96,10 +95,11 @@ Return the given definitions along with the initialization values.
 **Kind**: instance method of <code>[ParameterBag](#ParameterBag)</code>  
 <a name="ParameterBag+get"></a>
 
-### parameterBag.get(name)
+### parameterBag.get(name) ⇒ <code>Mixed</code>
 Return the value of the given parameter.
 
 **Kind**: instance method of <code>[ParameterBag](#ParameterBag)</code>  
+**Returns**: <code>Mixed</code> - - Value of the parameter.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -107,17 +107,29 @@ Return the value of the given parameter.
 
 <a name="ParameterBag+set"></a>
 
-### parameterBag.set(name, value)
+### parameterBag.set(name, value) ⇒ <code>Mixed</code>
 Set the value of a parameter. If the value of the parameter is updated
 (aka if previous value is different from new value) all registered
 callbacks are registered.
+
+**Kind**: instance method of <code>[ParameterBag](#ParameterBag)</code>  
+**Returns**: <code>Mixed</code> - - New value of the parameter.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>String</code> | Name of the parameter. |
+| value | <code>Mixed</code> | Value of the parameter. |
+
+<a name="ParameterBag+has"></a>
+
+### parameterBag.has(name) ⇒ <code>Boolean</code>
+Define if the `name` parameter exists or not.
 
 **Kind**: instance method of <code>[ParameterBag](#ParameterBag)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | name | <code>String</code> | Name of the parameter. |
-| value | <code>Mixed</code> | Value of the parameter. |
 
 <a name="ParameterBag+reset"></a>
 
@@ -288,6 +300,19 @@ Register a new type for the `parameters` factory.
 | type | <code>String</code> | <code>&#x27;enum&#x27;</code> | Define a boolean parameter. |
 | default | <code>Boolean</code> |  | Default value of the parameter. |
 | list | <code>Array</code> |  | Possible values of the parameter. |
+| constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
+
+<a name="anyDefinition"></a>
+
+## anyDefinition : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | <code>String</code> | <code>&#x27;enum&#x27;</code> | Define a parameter of any type. |
+| default | <code>Boolean</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
