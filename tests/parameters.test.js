@@ -44,7 +44,7 @@ tape('Param', (t) => {
 });
 
 tape('ParameterBag', (t) => {
-  t.plan(19);
+  t.plan(21);
 
   const definitions = {
     'a': {
@@ -103,6 +103,18 @@ tape('ParameterBag', (t) => {
 
   bag.removeParamListener('a');
   t.deepEqual(bag._paramsListeners['a'].size, 0, 'should clear listeners properly');
+
+
+
+  const triggerTestCallback = (v, m) => {
+    t.deepEqual(v, false, 'should trigger the callback with current value immediately if third argument of addParamListener is set to true');
+    t.deepEqual(m, definitions['a'].metas, 'should have param metas as second argument');
+  }
+
+  bag.addParamListener('a', triggerTestCallback, true);
+  bag.removeParamListener('a', triggerTestCallback);
+
+
 
   // callbacks
   bag.set('a', false);

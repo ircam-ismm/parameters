@@ -231,9 +231,18 @@ class ParameterBag {
    * @param {String} name - Parameter name.
    * @param {ParameterBag~paramListenerCallack} callback - Function to apply
    *  when the value of the parameter changes.
+   * @param {Boolean} [trigger=false] - Execute the callback immediately with
+   *  current parameter value.
    */
-  addParamListener(name, callback) {
+  addParamListener(name, callback, trigger = false) {
     this._paramsListeners[name].add(callback);
+
+    if (trigger) {
+      const param = this._params[name];
+      const value = param.getValue();
+      const metas = param.definition.metas;
+      callback(value, metas);
+    }
   }
 
   /**
