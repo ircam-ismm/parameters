@@ -41,6 +41,7 @@ export default {
    * @property {String} [type='boolean'] - Define a boolean parameter.
    * @property {Boolean} default - Default value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   boolean: {
@@ -56,10 +57,11 @@ export default {
   /**
    * @typedef {Object} integerDefinition
    * @property {String} [type='integer'] - Define a boolean parameter.
-   * @property {Boolean} default - Default value of the parameter.
-   * @property {Boolean} [min=-Infinity] - Minimum value of the parameter.
-   * @property {Boolean} [max=+Infinity] - Maximum value of the parameter.
+   * @property {Mixed} default - Default value of the parameter.
+   * @property {Number} [min=-Infinity] - Minimum value of the parameter.
+   * @property {Number} [max=+Infinity] - Maximum value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   integer: {
@@ -75,10 +77,11 @@ export default {
   /**
    * @typedef {Object} floatDefinition
    * @property {String} [type='float'] - Define a boolean parameter.
-   * @property {Boolean} default - Default value of the parameter.
-   * @property {Boolean} [min=-Infinity] - Minimum value of the parameter.
-   * @property {Boolean} [max=+Infinity] - Maximum value of the parameter.
+   * @property {Mixed} default - Default value of the parameter.
+   * @property {Number} [min=-Infinity] - Minimum value of the parameter.
+   * @property {Number} [max=+Infinity] - Maximum value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   float: {
@@ -94,8 +97,9 @@ export default {
   /**
    * @typedef {Object} stringDefinition
    * @property {String} [type='string'] - Define a boolean parameter.
-   * @property {Boolean} default - Default value of the parameter.
+   * @property {Mixed} default - Default value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   string: {
@@ -111,9 +115,10 @@ export default {
   /**
    * @typedef {Object} enumDefinition
    * @property {String} [type='enum'] - Define a boolean parameter.
-   * @property {Boolean} default - Default value of the parameter.
+   * @property {Mixed} default - Default value of the parameter.
    * @property {Array} list - Possible values of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   enum: {
@@ -129,8 +134,9 @@ export default {
   /**
    * @typedef {Object} anyDefinition
    * @property {String} [type='enum'] - Define a parameter of any type.
-   * @property {Boolean} default - Default value of the parameter.
+   * @property {Mixed} default - Default value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
+   * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   any: {
