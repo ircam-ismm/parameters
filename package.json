@@ -1,6 +1,6 @@
 {
   "name": "parameters",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Tiny and extendable library to create type checked class parameters",
   "main": "dist/parameters.js",
   "scripts": {

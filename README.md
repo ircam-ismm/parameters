@@ -81,7 +81,7 @@ Bag of parameters. Main interface of the library
         * [.reset([name])](#ParameterBag+reset)
         * [.addListener(callback)](#ParameterBag+addListener)
         * [.removeListener(callback)](#ParameterBag+removeListener)
-        * [.addParamListener(name, callback)](#ParameterBag+addParamListener)
+        * [.addParamListener(name, callback, [trigger])](#ParameterBag+addParamListener)
         * [.removeParamListener(name, callback)](#ParameterBag+removeParamListener)
     * _inner_
         * [~listenerCallback](#ParameterBag..listenerCallback) : <code>function</code>
@@ -166,15 +166,16 @@ Remove listener from all param changes.
 
 <a name="ParameterBag+addParamListener"></a>
 
-### parameterBag.addParamListener(name, callback)
+### parameterBag.addParamListener(name, callback, [trigger])
 Add listener to a given param updates.
 
 **Kind**: instance method of <code>[ParameterBag](#ParameterBag)</code>  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>String</code> | Parameter name. |
-| callback | <code>[paramListenerCallack](#ParameterBag..paramListenerCallack)</code> | Function to apply  when the value of the parameter changes. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| name | <code>String</code> |  | Parameter name. |
+| callback | <code>[paramListenerCallack](#ParameterBag..paramListenerCallack)</code> |  | Function to apply  when the value of the parameter changes. |
+| [trigger] | <code>Boolean</code> | <code>false</code> | Execute the callback immediately with  current parameter value. |
 
 <a name="ParameterBag+removeParamListener"></a>
 
@@ -244,6 +245,7 @@ Register a new type for the `parameters` factory.
 | type | <code>String</code> | <code>&#x27;boolean&#x27;</code> | Define a boolean parameter. |
 | default | <code>Boolean</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="integerDefinition"></a>
@@ -255,10 +257,11 @@ Register a new type for the `parameters` factory.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | type | <code>String</code> | <code>&#x27;integer&#x27;</code> | Define a boolean parameter. |
-| default | <code>Boolean</code> |  | Default value of the parameter. |
-| min | <code>Boolean</code> | <code>-Infinity</code> | Minimum value of the parameter. |
-| max | <code>Boolean</code> | <code>+Infinity</code> | Maximum value of the parameter. |
+| default | <code>Mixed</code> |  | Default value of the parameter. |
+| min | <code>Number</code> | <code>-Infinity</code> | Minimum value of the parameter. |
+| max | <code>Number</code> | <code>+Infinity</code> | Maximum value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="floatDefinition"></a>
@@ -270,10 +273,11 @@ Register a new type for the `parameters` factory.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | type | <code>String</code> | <code>&#x27;float&#x27;</code> | Define a boolean parameter. |
-| default | <code>Boolean</code> |  | Default value of the parameter. |
-| min | <code>Boolean</code> | <code>-Infinity</code> | Minimum value of the parameter. |
-| max | <code>Boolean</code> | <code>+Infinity</code> | Maximum value of the parameter. |
+| default | <code>Mixed</code> |  | Default value of the parameter. |
+| min | <code>Number</code> | <code>-Infinity</code> | Minimum value of the parameter. |
+| max | <code>Number</code> | <code>+Infinity</code> | Maximum value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="stringDefinition"></a>
@@ -285,8 +289,9 @@ Register a new type for the `parameters` factory.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | type | <code>String</code> | <code>&#x27;string&#x27;</code> | Define a boolean parameter. |
-| default | <code>Boolean</code> |  | Default value of the parameter. |
+| default | <code>Mixed</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="enumDefinition"></a>
@@ -298,9 +303,10 @@ Register a new type for the `parameters` factory.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | type | <code>String</code> | <code>&#x27;enum&#x27;</code> | Define a boolean parameter. |
-| default | <code>Boolean</code> |  | Default value of the parameter. |
+| default | <code>Mixed</code> |  | Default value of the parameter. |
 | list | <code>Array</code> |  | Possible values of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="anyDefinition"></a>
@@ -312,8 +318,9 @@ Register a new type for the `parameters` factory.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | type | <code>String</code> | <code>&#x27;enum&#x27;</code> | Define a parameter of any type. |
-| default | <code>Boolean</code> |  | Default value of the parameter. |
+| default | <code>Mixed</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
+| nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 
