@@ -1,17 +1,17 @@
 # ParametersJS
 
-> Tiny and extendable library to create type checked class parameters.
+> Tiny and extendable library for class parameters type checking and reflection.
 
 ## Install
 
 ```
-npm install [--save] ircam-jstools/parameters
+npm install [--save] @ircam/parameters
 ```
 
 ## Usage
 
 ```js
-import parameters from 'parameters'
+import parameters from '@ircam/parameters'
 
 const definitions = {
   myBooleanParam: {
