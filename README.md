@@ -1,4 +1,5 @@
-# ParametersJS
+# @ircam/parameters
+
 
 > Tiny and extendable library for class parameters type checking and reflection.
 
