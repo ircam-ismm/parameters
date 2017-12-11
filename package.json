@@ -1,6 +1,6 @@
 {
   "name": "@ircam/parameters",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Tiny and extendable library for class parameters type checking and reflection",
   "main": "dist/parameters.js",
   "author": "Benjamin Matuszewski",
