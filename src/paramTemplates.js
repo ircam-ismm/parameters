@@ -42,6 +42,9 @@ export default {
    * @property {Boolean} default - Default value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
    * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
+   * @property {Boolean} [event=true] - Define if the parameter is a volatile, e.g.
+   *    set its value back to null after propagation of its value. When `true`,
+   *    `nullable` is automatically set to `true` and `default` to `null`.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   boolean: {
@@ -62,6 +65,9 @@ export default {
    * @property {Number} [max=+Infinity] - Maximum value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
    * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
+   * @property {Boolean} [event=true] - Define if the parameter is a volatile, e.g.
+   *    set its value back to null after propagation of its value. When `true`,
+   *    `nullable` is automatically set to `true` and `default` to `null`.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   integer: {
@@ -82,6 +88,9 @@ export default {
    * @property {Number} [max=+Infinity] - Maximum value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
    * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
+   * @property {Boolean} [event=true] - Define if the parameter is a volatile, e.g.
+   *    set its value back to null after propagation of its value. When `true`,
+   *    `nullable` is automatically set to `true` and `default` to `null`.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   float: {
@@ -100,6 +109,9 @@ export default {
    * @property {Mixed} default - Default value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
    * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
+   * @property {Boolean} [event=true] - Define if the parameter is a volatile, e.g.
+   *    set its value back to null after propagation of its value. When `true`,
+   *    `nullable` is automatically set to `true` and `default` to `null`.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   string: {
@@ -119,6 +131,9 @@ export default {
    * @property {Array} list - Possible values of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
    * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
+   * @property {Boolean} [event=true] - Define if the parameter is a volatile, e.g.
+   *    set its value back to null after propagation of its value. When `true`,
+   *    `nullable` is automatically set to `true` and `default` to `null`.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   enum: {
@@ -137,6 +152,9 @@ export default {
    * @property {Mixed} default - Default value of the parameter.
    * @property {Boolean} [constant=false] - Define if the parameter is constant.
    * @property {Boolean} [nullable=false] - Define if the parameter is nullable.
+   * @property {Boolean} [event=true] - Define if the parameter is a volatile, e.g.
+   *    set its value back to null after propagation of its value. When `true`,
+   *    `nullable` is automatically set to `true` and `default` to `null`.
    * @property {Object} [metas={}] - Optionnal metadata of the parameter.
    */
   any: {

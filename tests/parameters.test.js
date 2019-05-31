@@ -44,7 +44,7 @@ tape('Param', (t) => {
 });
 
 tape('ParameterBag', (t) => {
-  t.plan(21);
+  t.plan(25);
 
   const definitions = {
     'a': {
@@ -114,8 +114,6 @@ tape('ParameterBag', (t) => {
   bag.addParamListener('a', triggerTestCallback, true);
   bag.removeParamListener('a', triggerTestCallback);
 
-
-
   // callbacks
   bag.set('a', false);
   let counter = 0;
@@ -123,8 +121,9 @@ tape('ParameterBag', (t) => {
   let paramCallbackCalled = false;
 
   const globalCallback = function(n, v, m) {
-    if (globalCallbackCalled)
+    if (globalCallbackCalled) {
       t.fail(`shouln't be called value didn't change`);
+    }
 
     globalCallbackCalled = true
     counter += 1;
@@ -136,8 +135,9 @@ tape('ParameterBag', (t) => {
   }
 
   const paramCallback = function(v, m) {
-    if (paramCallbackCalled)
-      t.fail(`shouln't be called value didn't change`);
+    if (paramCallbackCalled) {
+      t.fail(`shouln't be called, value didn't change`);
+    }
 
     paramCallbackCalled = true
 
@@ -153,4 +153,51 @@ tape('ParameterBag', (t) => {
   bag.set('a', true);
   bag.set('a', true);
 
+  bag.removeListener(globalCallback);
+  bag.removeParamListener('a', paramCallback);
+
+
+  t.comment('1setValue() w/ forcePropagation');
+
+  let forceCounter = 0;
+
+  const forceCallback = function(v, m) {
+    forceCounter += 1;
+
+    t.deepEqual(v, true, 'value should be true');
+
+    if (forceCounter === 2) {
+      t.deepEqual(counter, 2, 'should be called twice with same value');
+    }
+  }
+
+  bag.addParamListener('a', forceCallback);
+  bag.set('a', true, true);
+  bag.set('a', true, true);
+
+  t.comment('#getValues()');
+  t.deepLooseEqual(bag.getValues(), { a: true });
+});
+
+tape('parameters#event', t => {
+  t.plan(6);
+
+  const bag = parameters({
+    a: {
+      type: 'boolean',
+      event: true,
+    },
+  });
+
+  bag.addParamListener('a', (v) => {
+    t.deepEqual(v, true, 'should propagate true');
+  });
+
+  const v1 = bag.set('a', true);
+  t.deepEqual(v1, true, 'should return true');
+  t.deepEqual(bag.get('a'), null, 'should be back to null right after propagation');
+
+  const v2 = bag.set('a', true);
+  t.deepEqual(v2, true, 'should return true');
+  t.deepEqual(bag.get('a'), null, 'should be back to null right after propagation');
 });

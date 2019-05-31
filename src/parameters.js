@@ -23,10 +23,12 @@ class Param {
     this.type = definition.type;
     this.definition = definition;
 
-    if (this.definition.nullable === true && value === null)
+    if (this.definition.nullable === true && value === null) {
       this.value = null;
-    else
+    } else {
       this.value = typeCheckFunction(value, definition, name);
+    }
+
     this._typeCheckFunction = typeCheckFunction;
   }
 
@@ -45,11 +47,13 @@ class Param {
    *  (e.g. if the parameter already had this value).
    */
   setValue(value) {
-    if (this.definition.constant === true)
+    if (this.definition.constant === true) {
       throw new Error(`Invalid assignement to constant param "${this.name}"`);
+    }
 
-    if (!(this.definition.nullable === true && value === null))
+    if (!(this.definition.nullable === true && value === null)) {
       value = this._typeCheckFunction(value, this.definition, this.name);
+    }
 
     if (this.value !== value) {
       this.value = value;
@@ -121,10 +125,26 @@ class ParameterBag {
    * @return {Object}
    */
   getDefinitions(name = null) {
-    if (name !== null)
+    if (name !== null) {
       return this._definitions[name];
-    else
+    } else {
       return this._definitions;
+    }
+  }
+
+  /**
+   * Return values of all parameters as a flat object.
+   *
+   * @return {Object}
+   */
+  getValues() {
+    const values = {};
+
+    for (let name in this._params) {
+      values[name] = this._params[name].value;
+    }
+
+    return values;
   }
 
   /**
@@ -147,22 +167,30 @@ class ParameterBag {
    *
    * @param {String} name - Name of the parameter.
    * @param {Mixed} value - Value of the parameter.
+   * @param {Boolean} [forcePropagation=false] - if true, propagate value even
+   *    if the value has not changed.
    * @return {Mixed} - New value of the parameter.
    */
-  set(name, value) {
+  set(name, value, forcePropagation = false) {
     const param = this._params[name];
     const updated = param.setValue(value);
     value = param.getValue();
 
-    if (updated) {
+    if (param.definition.event === true) {
+      param.setValue(null);
+    }
+
+    if (updated || forcePropagation) {
       const metas = param.definition.metas;
       // trigger global listeners
-      for (let listener of this._globalListeners)
+      for (let listener of this._globalListeners) {
         listener(name, value, metas);
+      }
 
       // trigger param listeners
-      for (let listener of this._paramsListeners[name])
+      for (let listener of this._paramsListeners[name]) {
         listener(value, metas);
+      }
     }
 
     return value;
@@ -278,31 +306,42 @@ function parameters(definitions, values = {}) {
   }
 
   for (let name in definitions) {
-    if (params.hasOwnProperty(name) === true)
+    if (params.hasOwnProperty(name) === true) {
       throw new Error(`Parameter "${name}" already defined`);
+    }
 
     const definition = definitions[name];
 
-    if (!paramTemplates[definition.type])
+    if (!paramTemplates[definition.type]) {
       throw new Error(`Unknown param type "${definition.type}"`);
+    }
 
     const {
       definitionTemplate,
       typeCheckFunction
     } = paramTemplates[definition.type];
 
+    // if event property is set to true, the param must
+    // be nullable and its default value is `undefined`
+    if (definition.event === true) {
+      definition.nullable = true;
+      definition.default = null;
+    }
+
     let value;
 
-    if (values.hasOwnProperty(name) === true)
+    if (values.hasOwnProperty(name) === true) {
       value = values[name];
-    else
+    } else {
       value = definition.default;
+    }
 
     // store init value in definition
     definition.initValue = value;
 
-    if (!typeCheckFunction || !definitionTemplate)
+    if (!typeCheckFunction || !definitionTemplate) {
       throw new Error(`Invalid param type definition "${definition.type}"`);
+    }
 
     params[name] = new Param(name, definitionTemplate, typeCheckFunction, definition, value);
   }
