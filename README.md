@@ -255,7 +255,7 @@ Register a new type for the `parameters` factory.
 | default | <code>Boolean</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
-| event | <code>Boolean</code> | <code>true</code> | Define if the parameter is a volatile, e.g.    set its value back to null after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
+| event | <code>Boolean</code> | <code>false</code> | Define if the parameter is a volatile, e.g.    set its value back to `null` after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="integerDefinition"></a>
@@ -272,7 +272,7 @@ Register a new type for the `parameters` factory.
 | max | <code>Number</code> | <code>+Infinity</code> | Maximum value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
-| event | <code>Boolean</code> | <code>true</code> | Define if the parameter is a volatile, e.g.    set its value back to null after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
+| event | <code>Boolean</code> | <code>false</code> | Define if the parameter is a volatile, e.g.    set its value back to `null` after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="floatDefinition"></a>
@@ -289,7 +289,7 @@ Register a new type for the `parameters` factory.
 | max | <code>Number</code> | <code>+Infinity</code> | Maximum value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
-| event | <code>Boolean</code> | <code>true</code> | Define if the parameter is a volatile, e.g.    set its value back to null after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
+| event | <code>Boolean</code> | <code>false</code> | Define if the parameter is a volatile, e.g.    set its value back to `null` after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="stringDefinition"></a>
@@ -304,7 +304,7 @@ Register a new type for the `parameters` factory.
 | default | <code>Mixed</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
-| event | <code>Boolean</code> | <code>true</code> | Define if the parameter is a volatile, e.g.    set its value back to null after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
+| event | <code>Boolean</code> | <code>false</code> | Define if the parameter is a volatile, e.g.    set its value back to `null` after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="enumDefinition"></a>
@@ -320,7 +320,7 @@ Register a new type for the `parameters` factory.
 | list | <code>Array</code> |  | Possible values of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
-| event | <code>Boolean</code> | <code>true</code> | Define if the parameter is a volatile, e.g.    set its value back to null after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
+| event | <code>Boolean</code> | <code>false</code> | Define if the parameter is a volatile, e.g.    set its value back to `null` after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 <a name="anyDefinition"></a>
@@ -335,7 +335,7 @@ Register a new type for the `parameters` factory.
 | default | <code>Mixed</code> |  | Default value of the parameter. |
 | constant | <code>Boolean</code> | <code>false</code> | Define if the parameter is constant. |
 | nullable | <code>Boolean</code> | <code>false</code> | Define if the parameter is nullable. |
-| event | <code>Boolean</code> | <code>true</code> | Define if the parameter is a volatile, e.g.    set its value back to null after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
+| event | <code>Boolean</code> | <code>false</code> | Define if the parameter is a volatile, e.g.    set its value back to `null` after propagation of its value. When `true`,    `nullable` is automatically set to `true` and `default` to `null`. |
 | metas | <code>Object</code> | <code>{}</code> | Optionnal metadata of the parameter. |
 
 
