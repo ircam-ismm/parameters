@@ -157,7 +157,7 @@ tape('ParameterBag', (t) => {
   bag.removeParamListener('a', paramCallback);
 
 
-  t.comment('1setValue() w/ forcePropagation');
+  t.comment('setValue() w/ forcePropagation');
 
   let forceCounter = 0;
 
